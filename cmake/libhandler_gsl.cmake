@@ -1,0 +1,21 @@
+macro (libhandler_gsl)
+  libhandler_find_package (GSL "on ubuntu `sudo apt-get install libgsl0-dev`" ${ARGN})
+  if (GSL_FOUND)
+    # version checking
+    if (${GSL_VERSION} VERSION_LESS "1.12")
+      message (WARNING "GSL version < 1.12")
+      add_definitions (-DGSL_VERSION_LESS_THAN_1_12)
+    endif ()
+
+    add_definitions (-DHAVE_INLINE) # enable gsl's inline macros (assuming gcc)
+    include_directories (${GSL_INCLUDE_DIR})
+    set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${CMAKE_GSL_CXX_FLAGS}")
+    set (CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} ${GSL_EXE_LINKER_FLAGS}")
+    set (IRPLIB_GSL ${GSL_LIBRARIES})
+  endif ()
+
+  libhandler_atlas ()
+  if (ATLAS_FOUND)
+    set (IRPLIB_GSL -lgsl -latlas -lcblas -lm)
+  endif ()
+endmacro ()

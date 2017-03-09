@@ -1,0 +1,12 @@
+// modified version - original in svn revision 75
+package hauv;
+
+struct bs_rnv_t
+{
+    int64_t time_received;
+    int64_t time;
+    double horizontal;
+    double vertical;
+    double distance;
+    double heading;
+}

@@ -1,0 +1,102 @@
+package hauv;
+
+struct didson_t
+{
+	int32_t m_nFrameNumber;
+	int64_t m_tFrameTime; // client PC time (8 bytes, was 4 bytes prior to V4.00)
+	int32_t m_nVersion; // keep unique version for frame data (sonar data format)
+	// At this time not used. Any change in frame header
+	// generates an increment in file version
+	int32_t m_nStatus; // feedback on client commands
+	int32_t m_nYear; // sonar CPU year ex: 2002
+	int32_t m_nMonth; // 1-12
+	int32_t m_nDay; // 1-31
+	int32_t m_nHour; // 0-23
+	int32_t m_nMinute; // 0-59
+	int32_t m_nSecond; // 0-59
+	int32_t m_nHSecond; // 0-99
+	int32_t m_nTransmitMode; // bit1 = ENABLE, bit0 = HF_MODE
+	int32_t m_nWindowStart; // 1-31 CW meters = N*Incr, Incr = .375 (HF) or 0.75 (LF)
+	// XW meters = N*Incr, Incr = .42 (HF) or 0.84 (LF)
+	int32_t m_nWindowLength; // 0-3 CW (1.125, 2.25, 4.5, 9 m) HF or (4.5, 9, 18, 36 m) LF
+	// Std XW (1.25, 2.5, 5, 10 m) HF or (5, 10, 20, 40 m) LF
+	// LR XW (2.5, 5, 10, 20 m) HF or (10, 20, 40, 80 m) LF
+	int32_t m_nThreshold; // 0-80 dB for display only � does not affect raw data
+	int32_t m_nIntensity; // 10-90 dB for display only � does not affect raw data
+	int32_t m_nReceiverGain; // 0-40 dB normalized gain range
+	int32_t m_nDegC; // Power Supply Temp �C
+	int32_t m_nDegC2; // A/D Temp �C
+	int32_t m_nHumidity; // relative humidity 0-100
+	int32_t m_nFocus; // 0-255 Focus position code (range varies with sonar model)
+	int32_t m_nBattery; // Volts at sonar PS in tenths, e.g. 145 = 14.5 volts (Note 12)
+	float m_fUserValue1; // User defined value for embedded applications (Note 13)
+	float m_fUserValue2; // User defined value for embedded applications
+	float m_fUserValue3; // User defined value for embedded applications
+	float m_fUserValue4; // User defined value for embedded applications
+	float m_fUserValue5; // User defined value for embedded applications
+	float m_fUserValue6; // User defined value for embedded applications
+	float m_fUserValue7; // User defined value for embedded applications
+	float m_fUserValue8; // User defined value for embedded applications
+	float m_fVelocity; // These are space holders for platform generated data
+	float m_fDepth; // Placed in the header external to the sonar (except DH model)
+	float m_fAltitude; // Placed in the header external to the sonar
+	float m_fPitch; // Placed in the header external to the sonar
+	float m_fPitchRate; // Placed in the header external to the sonar
+	float m_fRoll; // Placed in the header external to the sonar
+	float m_fRollRate; // Placed in the header external to the sonar
+	float m_fHeading; // From sonar compass or external to the sonar
+	float m_fHeadingRate; // Placed in the header external to the sonar
+	float m_fCompassHeading; // From sonar compass when installed
+	float m_fCompassPitch; // From sonar compass when installed
+	float m_fCompassRoll; // From sonar compass when installed
+	double m_dLatitude; // In degrees ddd.ddddddd
+	double m_dLongitude; // In degrees ddd.ddddddd
+	float m_fSonarPosition; // Placed in the header external to the sonar
+	int32_t m_nConfigFlags; // sonar configuration flags updated Dec 2006 (see Note 8)
+	int32_t m_nPrismTilt; // sonar split-body variable added 26 April 2004
+	float m_fTargetRange; // added 14 September 2004 for topside software use
+	float m_fTargetBearing; // added 14 September 2004 for topside software use
+	boolean m_bTargetPresent; // added 14 September 2004 for topside software use
+	int32_t m_nFirmwareRevision; // added 1 April 2005
+	int32_t m_nFlags; // added 1 August 2005 (see Note 9)
+	int32_t m_nSourceFrame; // added 16 Nov 2006 (record CSOT source frame)
+	float m_fWaterTemp; // added 19 February 2007 to store NMEA MTW input
+	int32_t m_nTimerPeriod; // added 18 June 2007 for non-integral frame rates
+	float m_fSonarX; // added 26 December 2007
+	float m_fSonarY; // added 26 December 2007
+	float m_fSonarZ; // added 6 March 2008 for DDF_04
+	float m_fSonarPan; // from ROS/Sidus/SMC rotators
+	float m_fSonarTilt; // from ROS/Sidus/SMC rotators
+	float m_fSonarRoll; // from ROS/Sidus/SMC rotators
+	float m_fPanPNNL; // legacy custom data from Battelle PNNL equipment
+	float m_fTiltPNNL; // legacy custom data from Battelle PNNL equipment
+	float m_fRollPNNL; // legacy custom data from Battelle PNNL equipment
+	double m_dVehicleTime; // Bluefin HAUV time (seconds since 1 Jan 1970)
+	float m_fTimeGGK; // time data from NMEA GGK string
+	int32_t m_nDateGGK; // time data from NMEA GGK string
+	int32_t m_nQualityGGK; // date data from NMEA GGK string
+	int32_t m_nNumSatsGGK; // number of satellites data from NMEA GGK string
+	float m_fDOPGGK; // degree of precision data from NMEA GGK string
+	float m_fEHTGGK; // data from NMEA GGK string
+	float m_fHeaveTSS; // heave data from TSS aux input string
+	int32_t m_nYearGPS; // GPS input data - GPS time data
+	int32_t m_nMonthGPS; // GPS input data - GPS time data
+	int32_t m_nDayGPS; // GPS input data - GPS time data
+	int32_t m_nHourGPS; // GPS input data - GPS time data
+	int32_t m_nMinuteGPS; // GPS input data - GPS time data
+	int32_t m_nSecondGPS; // GPS input data - GPS time data
+	int32_t m_nHSecondGPS; // GPS input data - GPS time data
+	float m_fSonarPanOffset; // sonar mount "pan 0" rotation about Z axis
+	float m_fSonarTiltOffset; // sonar mount "tilt 0" rotation about local sonar Y axis
+	float m_fSonarRollOffset; // sonar mount "roll 0" rotation about local sonar X axis
+	float m_fSonarXOffset; // added 28 May 2008
+	float m_fSonarYOffset; // added 28 May 2008
+	float m_fSonarZOffset; // added 28 May 2008
+	float m_fTMatrix[16]; // added 28 May 2008
+	byte m_cRsvdData[604]; // (604) pad frame header to 1024 bytes
+    byte m_cData[49152]; // acoustic data length
+	// DIDSON-Std 24576 (LF) or 49152 (HF)
+	// DIDSON-LR 24576 (LF, HF)
+
+    int64_t time_first_packet; // not part of DIDSON frame
+}

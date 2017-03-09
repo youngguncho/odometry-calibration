@@ -1,0 +1,11 @@
+package hauv;
+
+struct pdn_reward_collection_t
+{
+    int64_t utime;
+
+    int32_t opt_idx;
+
+    int32_t  n;             // n = nwps + 1(exp)
+    pdn_reward_t R[n];
+}

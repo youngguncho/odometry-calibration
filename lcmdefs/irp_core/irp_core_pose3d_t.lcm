@@ -1,0 +1,10 @@
+package irp_core;
+
+struct pose3d_t
+{
+    int64_t  utime;
+
+    // x_ij
+    double   mu[6];       // [x,y,z,r,p,h]  meters and rads
+    double   Sigma[36];
+}

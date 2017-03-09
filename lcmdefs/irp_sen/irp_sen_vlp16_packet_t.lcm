@@ -1,0 +1,7 @@
+package irp_sen;
+
+struct vlp16_packet_t {
+    int64_t utime;       // timestamp
+
+    byte data[1206];     // packet contents
+}

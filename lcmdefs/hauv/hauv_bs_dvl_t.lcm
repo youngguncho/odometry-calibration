@@ -1,0 +1,16 @@
+package hauv;
+
+struct bs_dvl_t
+{
+    int64_t time_received;
+    int64_t time;
+    double x_velocity;
+    double y_velocity;
+    double z_velocity;
+    double range1;
+    double range2;
+    double range3;
+    double range4;
+    double temperature;
+    int64_t time_measured;
+}

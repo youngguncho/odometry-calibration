@@ -1,0 +1,21 @@
+package hauv;
+
+struct pdn_reward_t
+{
+    int64_t utime_current;
+
+    // utime of the target wp
+    int64_t utime_target;
+
+    // number of waypoints
+    int32_t nwps;
+
+    // current wp id (0 for exp)
+    int32_t wp_id;
+
+    double S;
+    double A;
+
+    // calculation time (debug)
+    int64_t dt;
+}

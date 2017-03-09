@@ -1,0 +1,29 @@
+package irp_slam;
+
+
+/**
+ * Add a pose to pose factor
+ * full state constraints such as laser scan matching or odometry
+ */
+
+struct isam_f_pose_pose_t
+{
+    int64_t utime;
+
+    int64_t node_id1;   //!< id of the first node (usually utime)
+    int64_t node_id2;   //!< id of the second node (usually utime)
+
+    int32_t sub_type;  //!< factor sub type
+    const int32_t SUB_TYPE_ODOMETRY_2D = 1;
+    const int32_t SUB_TYPE_ODOMETRY_3D = 2;
+    const int32_t SUB_TYPE_LASER_2D    = 3;
+    const int32_t SUB_TYPE_LASER_3D    = 4;
+    const int32_t SUB_TYPE_SONAR_3D    = 5;
+
+    int32_t n;
+    double  z[n];     //!< measurement vector
+    int32_t n2;
+    double  R[n2];    //!< measurement covariance
+
+    boolean use_dcs;    //!< use dynamic covariance scaling
+}

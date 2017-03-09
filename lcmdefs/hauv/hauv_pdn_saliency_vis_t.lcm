@@ -1,0 +1,16 @@
+package hauv;
+
+struct pdn_saliency_vis_t
+{
+    int64_t utime;
+
+    // saliency
+    int32_t nnodes;
+    double S_L[nnodes];
+    double S_G[nnodes];
+
+    // point (x,y,z)
+    double x[nnodes];
+    double y[nnodes];
+    double z[nnodes];
+}

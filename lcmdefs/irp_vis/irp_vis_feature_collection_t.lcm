@@ -1,0 +1,11 @@
+package irp_vis;
+
+struct feature_collection_t
+{
+    int64_t utime;
+    string  channel;
+
+    int32_t  ntypes;
+    feature_t f[ntypes];
+
+}

@@ -1,0 +1,25 @@
+package dehaze;
+
+/**
+ * image enhancement for debug plot
+ */
+
+struct ibeo_2202_t
+{
+	int64_t utime;			// utime [usec]
+	
+	int32_t mode;
+    const int32_t IE_MODE_SIMPLE             = 0;
+    const int32_t IE_MODE_FULL               = 1;
+        
+	int32_t width;
+	int32_t height;
+	float original_img[width*height];
+	float enhanced_img[width*height];
+	
+	int32_t n;
+	float plane_param[n];
+	int32_t n2;
+	float led_pose[n2];
+	
+}

@@ -1,0 +1,8 @@
+package irp_sen;
+
+struct dvl2_t {
+    int64_t utime;
+
+    // w.r.t sensor local coordinate
+	float vel[3];   // acceleration 
+}

@@ -1,0 +1,9 @@
+package hauv;
+
+struct pl_ghp_t
+{
+    int64_t time;
+    double horizontal;
+    double vertical;
+    double distance;
+}

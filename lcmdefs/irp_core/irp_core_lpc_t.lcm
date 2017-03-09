@@ -1,0 +1,18 @@
+package irp_core;
+
+struct lpc_t
+{
+	// local point cloud lcm type
+	
+    int64_t  utime;		// timestamp
+
+    int32_t n;          // int32_t is not enough
+	                    // number of points
+    float x[n];
+    float y[n];
+    float z[n];
+	
+	int64_t	node_id;	// associated node id (usually utime)
+	
+    // rgb_t cpc[n];    // colored pointed cloud
+}

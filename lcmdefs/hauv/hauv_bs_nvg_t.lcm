@@ -1,0 +1,18 @@
+package hauv;
+
+struct bs_nvg_t
+{
+    int64_t time_received;
+    int64_t time;
+    double latitude;
+    string hemisphere_ns;
+    double longitude;
+    string hemisphere_ew;
+    int8_t quality;
+    double altitude;
+    double depth;
+    double heading;
+    double roll;
+    double pitch;
+    int64_t time_compute;
+}

@@ -1,0 +1,27 @@
+package irp_sen;
+
+struct ms_gx3_25_t
+{
+    int64_t utime;
+
+    int64_t bitmask;
+    const int16_t 
+	INST_MAGFIELD=1,
+	INST_ACCEL=2,
+	INST_ANGRATE=4,
+        EULER=8,
+	STAB_MAGFIELD=16,
+	STAB_ACCEL=32,
+	STAB_ANGRATE=64,
+	TEMPERATURE=128;
+
+
+    // stabilized and instantaneous stored in same location, check bitmask to see which
+    double MagField[3];   // [Gauss] magnetic field vector
+    double Accel[3];      // [m/s^2] linear acceleration
+    double AngRate[3];    // [rad/s] angular rate
+    double Euler[3];      // [rad]   Euler angles
+
+    double Temperature;    // [C]
+    int32_t TimerTicks;    // seconds (should be interpreted as uint32_t)
+}

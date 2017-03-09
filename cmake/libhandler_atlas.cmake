@@ -1,0 +1,7 @@
+macro (libhandler_atlas)
+  libhandler_find_library (cblas "on ubuntu `sudo apt-get install libatlas-base-dev`" ${ARGN})
+  libhandler_find_library (atlas "on ubuntu `sudo apt-get install libatlas-base-dev`" ${ARGN})
+  if (CBLAS_FOUND AND ATLAS_FOUND)
+    set (IRPLIB_ATLAS ${CBLAS_LIBRARIES} ${ATLAS_LIBRARIES})
+  endif ()
+endmacro ()

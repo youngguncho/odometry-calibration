@@ -1,0 +1,7 @@
+macro (libhandler_glog)
+  libhandler_find_package (GLOG "on ubuntu `sudo apt-get install libgoogle-glog-dev`" ${ARGN})
+  if (GLOG_FOUND)
+    set (IRPLIB_GLOG)
+    include_directories (${GLOG_INCLUDE_DIR})
+  endif ()
+endmacro ()

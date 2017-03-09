@@ -1,0 +1,10 @@
+package irp_vis;
+
+struct cvsurf_params_t
+{
+    int64_t utime;
+    double hessianThreshold;
+    int32_t nOctaves;
+    int32_t nOctaveLayers;
+    int8_t extended;
+}

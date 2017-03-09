@@ -1,0 +1,20 @@
+package hauv;
+
+struct wp_goto_request_t
+{
+    // request goto message from viewer
+    // target utime with rq_id
+
+    int32_t mode;
+
+    int32_t waypoint_id;
+
+    // see hauv_wp_goto_t lcmtypes for the mode information below
+    // const int32_t MODE_OFF      = 0;
+    // const int32_t MODE_GOTO     = 1; // goto Cartesian waypoint given by utime
+    // const int32_t MODE_RESUME   = 2; // same as GOTO, but reset hull relative vehicle navigation
+    //                                  // so that vehicle believes it is at same point again
+    // const int32_t MODE_GOTO_REL = 3; // goto original relative coordinates at utime
+    // const int32_t MODE_FOLLOW_PATH = 4;
+    // const int32_t MODE_GOTO_BACK
+}

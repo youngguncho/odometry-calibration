@@ -1,0 +1,24 @@
+package hauv;
+
+struct pdn_path_vis_t
+{
+    int64_t utime;
+
+    // nodes on the path
+    int32_t n_pathnode;
+    double x[n_pathnode];
+    double y[n_pathnode];
+    double z[n_pathnode];
+
+    // predicted cam meas
+    int32_t max_nplinks;
+    double target_x[n_pathnode][max_nplinks];
+    double target_y[n_pathnode][max_nplinks];
+    double target_z[n_pathnode][max_nplinks];
+
+    // waypoint id
+    int32_t n_wps;
+    int32_t wp_id[n_pathnode];
+
+    double pathlen;
+}

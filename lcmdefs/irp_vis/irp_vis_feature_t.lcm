@@ -1,0 +1,33 @@
+package irp_vis;
+
+struct feature_t
+{
+    int64_t utime;
+
+    int32_t npts;
+    float   u[npts];
+    float   v[npts];
+    int32_t keylen;
+    float   keys[npts][keylen];
+
+    int32_t attrtype;
+    int32_t attrsize;
+    byte    attr[attrsize];
+
+    int32_t usertype;
+    int32_t usersize;
+    byte    user[usersize];
+
+    //string channel;      // What image channel did the features come from?
+
+    const int32_t ATTRTYPE_NONE      = 0;
+    const int32_t ATTRTYPE_CVSURF    = 1;
+    const int32_t ATTRTYPE_KAZE      = 2;
+    const int32_t ATTRTYPE_SIFTGPU   = 4;
+    const int32_t ATTRTYPE_SURFGPU   = 8;
+
+    const int32_t USERTYPE_NONE      = 0;
+    const int32_t USERTYPE_DEPTH     = 1;
+
+}
+

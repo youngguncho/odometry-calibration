@@ -1,0 +1,11 @@
+package irp_core;
+
+struct point3d_list_t
+{
+    int64_t  utime;
+
+    int64_t n;          // int32_t is not enough
+    point3d_t pc[n];    // point cloud
+
+    // rgb_t cpc[n];    // colored pointed cloud
+}

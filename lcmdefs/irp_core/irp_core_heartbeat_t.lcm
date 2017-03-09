@@ -1,0 +1,6 @@
+package irp_core;
+
+struct heartbeat_t
+{
+    int64_t utime;
+}

@@ -1,0 +1,30 @@
+package irp_slam;
+
+/**
+ * node type (note this is not part of the LCM isam-server api used for
+ * marshalling)
+ */
+
+struct isam_node_t {
+    int64_t utime;
+
+    int64_t id;                     //!< id of node (usually a utime)
+
+    int32_t node_type;              //!< node type
+    const int32_t TYPE_POINT2D = 0;
+    const int32_t TYPE_POINT3D = 1;
+    const int32_t TYPE_POSE2D  = 2;
+    const int32_t TYPE_POSE3D  = 3;
+    const int32_t TYPE_PLANE3D = 4;
+    const int32_t TYPE_PLANE2D = 5;
+    const int32_t TYPE_ANCHOR2D = 6;
+    const int32_t TYPE_ANCHOR3D = 7;
+
+    int32_t n;
+    double  mu[n];                   //!< best estimate of node (linearization point)
+    int32_t n2;
+    double  cov[n2];                //!< marginal covariance of the best estimate of the node
+
+    int8_t has_anchor;
+    int64_t anchor_id;
+}

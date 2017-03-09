@@ -1,0 +1,6 @@
+macro (libhandler_AKAZE)
+  libhandler_find_library (AKAZE "did you build akaze in third-party?" ${ARGN})
+  if (AKAZE_FOUND)
+    set (IRPLIB_AKAZE ${AKAZE_LIBRARIES})
+  endif ()
+endmacro ()

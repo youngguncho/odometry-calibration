@@ -1,0 +1,14 @@
+package hauv;
+
+struct bs_imu_t
+{
+    int64_t time_received;
+    int64_t time;
+    double rate_x;
+    double rate_y;
+    double rate_z;
+    double acc_x;
+    double acc_y;
+    double acc_z;
+    int64_t time_measured;
+}

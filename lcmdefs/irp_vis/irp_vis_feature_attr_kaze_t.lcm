@@ -1,0 +1,9 @@
+package irp_vis;
+
+struct attr_kaze_t
+{
+    int32_t npts;
+    float   s[npts]; // scale
+    float   o[npts]; // orientation
+}
+

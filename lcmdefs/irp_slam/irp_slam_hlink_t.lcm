@@ -1,0 +1,18 @@
+package irp_slam;
+
+/**
+ * Add a hypothesis link
+ */
+
+struct hlink_t
+{
+    int64_t utime;
+
+    int64_t node_id1;
+    int64_t node_id2;
+
+    int32_t n;          
+    double xij[n];        //navigation prior
+    int32_t n2;
+    double Sij[n2];
+}

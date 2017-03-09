@@ -1,0 +1,10 @@
+package irp_core;
+
+struct point3d_t
+{
+    //int64_t  utime; // ? we will probabily work with point cloud
+
+    float x;
+    float y;
+    float z;
+}

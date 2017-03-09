@@ -1,0 +1,7 @@
+package hauv;
+
+struct pl_spd_t
+{
+    int64_t time;
+    double speed;
+}

@@ -1,0 +1,32 @@
+package irp_slam;
+
+/**
+ * Add a pose to pose partial factor (bearing only, range only)
+ * requires x_vs as partial state pose to pose factors cannot be transformed into body frame
+ */
+
+
+struct isam_f_pose_pose_partial_t
+{
+    int64_t utime;
+
+    int64_t node_id1;     //!< id of the first node (usually utime)
+    int64_t node_id2;     //!< id of the second node (usually utime)
+    
+    int32_t sub_type;  //!< factor sub type
+    const int32_t SUB_TYPE_CAMERA_5D      = 1;
+    const int32_t SUB_TYPE_SONAR_3D       = 2;
+    const int32_t SUB_TYPE_WALL_3D        = 3;
+    const int32_t SUB_TYPE_CAMERA_5D_DCS  = 5;
+
+    int32_t n;
+    double  z[n];     //!< measurement vector
+    int32_t n2;
+    double  R[n2];    //!< measurement covariance
+
+    int32_t m;
+    double  x_vs1[m]; //!< extra sensor information for pose1
+    double  x_vs2[m]; //!< extra sensor information for pose2
+
+    boolean use_dcs;    //!< use dynamic covariance scaling
+}

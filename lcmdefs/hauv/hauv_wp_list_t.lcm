@@ -1,0 +1,11 @@
+package hauv;
+
+struct wp_list_t
+{
+    // list current set of waypoints
+    int32_t n;
+    int32_t id[n];
+    int64_t utime[n];
+    string  name[n];
+}
+

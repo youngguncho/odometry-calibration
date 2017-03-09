@@ -1,0 +1,13 @@
+package irp_sen;
+
+/**
+ * IRAP sensor altitude data
+ */
+
+struct alt_t
+{
+
+    int64_t utime;                  // utime [usec]
+
+    double alt;                     // altitude [m]
+}

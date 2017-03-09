@@ -1,0 +1,30 @@
+package irp_slam;
+
+struct isam_init_t
+{
+    int64_t     utime;
+
+    int8_t      verbose;
+    int8_t      quiet;
+    int8_t      force_numerical_jacobian;
+    int32_t     method;
+    
+    double      epsilon1;
+    double      epsilon2;
+    double      epsilon3;
+    double      epsilon_abs;
+    double      epsilon_rel;
+
+    int32_t     max_iterations;
+    double      lm_lambda0;
+    double      lm_lambda_factor;
+    int8_t      continuable;     //removed from current version of isam
+    double      last_lambda;     //removed from current version of isam
+    int32_t     mod_update;
+    int32_t     mod_batch;
+    int32_t     mod_solve;
+
+    const int32_t GAUSS_NEWTON          = 1;
+    const int32_t LEVENBERG_MARQUARDT   = 2;
+    const int32_t DOG_LEG               = 3;
+}

@@ -1,0 +1,8 @@
+package hauv;
+
+struct wp_delete_t
+{
+    // delete waypoint
+    int32_t waypoint_id;
+}
+

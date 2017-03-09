@@ -1,0 +1,23 @@
+package irp_slam;
+
+/**
+ * state request to isam-server
+ */
+
+struct isam_request_state_t
+{
+    int64_t utime;        //!< utime of state request
+
+    int64_t requester;    //!< optional id of requester, passed out by corresponding return_state_t
+
+    int32_t nn;           //!< Number of nodes
+    int64_t node_id[nn];  //!< id of each node (usually utime)
+    int8_t  all_nodes;    //!< Boolean, if true request all available nodes ignoring node_id[nn]
+    int8_t  req_mu;       //!< request mu, boolean
+    int16_t req_cov;      //!< request cov (enum type below)
+
+    const int16_t COV_NONE     = 0;  //!< no covariance request
+    const int16_t COV_FULL     = 1;  //!< full covariance matrix
+    const int16_t COV_BLOCK    = 2;  //!< block diagonal elements
+    const int16_t COV_RIGHTCOL = 3;  //!< block right column elements
+}

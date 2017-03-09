@@ -1,0 +1,40 @@
+package irp_vis;
+
+struct calib_t
+{
+   //-------------PARSED QUANTITIES--------------------//
+
+   // image size
+   int32_t width;
+   int32_t height;
+
+   // pinhole model params
+   double fc[2];      // focal length
+   double cc[2];      // principal point
+   double alpha_c;    // skew coefficient
+   double fc_std[2];
+   double cc_std[2];
+   double alpha_c_std;
+
+   // lens distortion params
+   double  kc[5];
+   double  kc_std[5];
+   int32_t kc_model;
+   const int32_t KC_MODEL_RADIAL    = 0;
+   const int32_t KC_MODEL_RADTAN    = 1; // radial/tangential
+   const int32_t KC_MODEL_SPHERICAL = 2;
+   const int32_t KC_MODEL_FULL_MAP  = 3; // no model provided, use full map
+   
+   //############################// would prefere to use string, but any pointer in this def will break all sorts of vSLAM code.
+   //############################int8_t undist_map_path[1024];           // path to an undistortion mapping file (binary perllcm_vis_ocvu_map_t)
+   //############################int8_t dist_map_path[1024];             // path to an distortion mapping file (binary perllcm_vis_ocvu_map_t)
+
+   //-------------DERIVED QUANTITIES--------------------//
+
+   // calibration matrix
+   double  K[9];
+   double  Kinv[9];
+
+   // field of view
+   double fov[2];   // [rad]
+}

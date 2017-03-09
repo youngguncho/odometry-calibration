@@ -1,0 +1,11 @@
+package hauv;
+
+struct bs_mbs_t
+{
+    int64_t time_received;
+    int64_t time;
+    string current_dive_file;
+    int32_t behavior_number;
+    string behavior_identifier;
+    string behavior_type;
+}

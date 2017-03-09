@@ -1,0 +1,8 @@
+package hauv;
+
+struct bs_rdp_t
+{
+    int64_t time_received;
+    int64_t time;
+    double pressure;
+}

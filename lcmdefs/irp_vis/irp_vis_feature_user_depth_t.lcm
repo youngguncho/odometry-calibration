@@ -1,0 +1,9 @@
+package irp_vis;
+
+struct feature_user_depth_t
+{
+    int32_t npts;
+
+    float mu_Z[npts];
+    float Sigma_Z[npts];
+}

@@ -1,0 +1,12 @@
+package hauv;
+
+struct ms_cmd_t
+{
+    // multi-session related cmds (hauv specific)
+
+    int64_t utime;
+
+    int64_t utime_conn;          // utime (in loaded mission) to connect with
+    double mu_conn[6];           
+    double cov_conn[3];          // odo uncertainty in meter when merging map
+}

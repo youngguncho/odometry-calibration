@@ -1,0 +1,16 @@
+package hauv;
+
+struct wp_goto_state_t
+{
+    int32_t mode; // current mode, see goto_t
+
+    double waypoint_horizontal; // actual waypoint we command the vehicle to go to
+    double waypoint_vertical;
+
+    double original_horizontal; // waypoint without correction
+    double original_vertical;
+
+    // same as above but in Cartesian coordinates (x,y,z,yaw,pitch,roll)
+    double waypoint[6];
+    double original[6];
+}

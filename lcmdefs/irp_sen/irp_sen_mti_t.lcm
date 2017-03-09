@@ -1,0 +1,11 @@
+package irp_sen;
+
+struct mti_t {
+    int64_t utime;
+
+    // w.r.t sensor local coordinate
+	float acc[3];   // acceleration 
+	float mag[3];   
+	float gyr[3];   
+	float ori[3];   // roll,pitch,yaw
+}

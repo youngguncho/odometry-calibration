@@ -1,0 +1,7 @@
+macro (libhandler_java)
+  libhandler_find_package (Java "on ubuntu `sudo apt-get install openjdk-7-jdk`" ${ARGN})
+  if (Java_FOUND)
+    include_directories (${Java_INCLUDE_DIRS})
+    set (IRPLIB_JAVA ${Java_LIBRARIES})
+  endif ()
+endmacro ()

@@ -1,0 +1,32 @@
+package irp_slam;
+
+/**
+ * Graph published by isam-server for visualization
+ */
+
+struct isam_graph_vis_t
+{
+    int64_t utime;
+    int32_t nn;             //!< number of nodes
+    int64_t node_id[nn];    //!< id of each node (usually a utime)
+    int32_t node_type[nn];  //!< the type of each node see isam2_node_t.lcm
+    int32_t dim[nn];        //!< the dimension of each node
+    int32_t n;              //!< length of the mu vector (sum(dim))
+    double  mu[n];          //!< the mean vector
+    int32_t mu_ind[nn];     //!< cached offset of each node to quickly index mu
+    
+    int32_t nf;             //!< number of factors
+    int32_t f_type[nf];     //!< all factors have a unique id, isam_util_factor_types.h
+    int32_t f_sub_type[nf]; //!< some factors have sub types (see factors' lcm defs)
+    int32_t f_nn[nf];       //!< the number of nodes associated with each factor
+    int32_t nfn;            //!< length of the f_nodes vector (sum(f_nn))
+    int64_t f_nodes[nfn];   //!< the nodes associated with each factor
+    int32_t f_nodes_ind[nf]; //!< the factor node's start index in f_nodes array
+
+    int32_t m;
+    double cov_mr[m];            //!< most receent pose covariance
+
+    int64_t anchor_id[nn];   //!< id of associated anchor node
+
+    const int32_t ANCHOR_NOT_ADDED = -1;
+}

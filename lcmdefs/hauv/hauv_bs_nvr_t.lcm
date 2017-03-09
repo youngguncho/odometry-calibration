@@ -1,0 +1,13 @@
+package hauv;
+
+struct bs_nvr_t
+{
+    int64_t time_received;
+    int64_t time;
+    double east_velocity;
+    double north_velocity;
+    double down_velocity;
+    double pitch_rate;
+    double roll_rate;
+    double yaw_rate;
+}

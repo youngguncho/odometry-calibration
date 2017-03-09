@@ -1,0 +1,35 @@
+package irp_slam;
+
+struct isam_return_cholmod_sparse_t
+{
+    // cholmod_spare is column-based while isam sparsesystem is row-based
+    // double-check if it is transpose of requested
+
+    int64_t  utime;
+
+    int16_t  type;
+
+    // need to have pairs <utime, index> to notify starting index to access a node
+    int32_t  nn;
+    int64_t  node_id[nn];     //!< id of each node (usually a utime)
+    int32_t  t_to_id[nn];     //!< utime to isam id
+    int32_t  t_to_start[nn];  //!< utime to isam start idx
+    int32_t  node_type[nn];   //!< the type of each node see isam_util_factor_types.h
+    int32_t  dim[nn];         //!< the dimension of each node
+    int32_t  index[nn];       //!< cached offset of each node to quickly index R or J
+
+
+    // cholmod_sparse_t nrow by ncol (nrow == n_nodes*pos_dim + n_anchor_nodes*6)
+    int32_t  nrow;
+    int32_t  ncol;
+    int32_t  nnz;
+
+    int32_t  np;      //!< == ncol+1
+    int32_t  p[np];   //!< the column pointers
+    int32_t  i[nnz];  //!< the row indices
+    double   x[nnz];  //!< pointers to double
+
+    // index ordering
+    int32_t  ndim;
+    int32_t  a_to_r[ndim];  //!< added order to R order
+}

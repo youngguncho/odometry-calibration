@@ -1,0 +1,8 @@
+package irp_vis;
+
+struct feature_attr_siftgpu_t
+{
+    int32_t npts;
+    float   s[npts]; // scale
+    float   o[npts]; // orientation
+}

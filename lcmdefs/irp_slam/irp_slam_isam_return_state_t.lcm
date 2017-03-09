@@ -1,0 +1,31 @@
+package irp_slam;
+
+/**
+ * state return from isam-server 
+ */
+
+struct isam_return_state_t
+{
+    int64_t utime;          //!< utime of state return
+
+    int32_t requester;      //!< optional id of requester, passed out by corresponding return_state_t
+    
+    int32_t nn;             //!< number of nodes
+    int64_t node_id[nn];    //!< id of each node (usually a utime)
+    int32_t node_type[nn];  //!< the type of each node see isam2_node_t
+    int32_t dim[nn];        //!< the dimension of each node
+    int32_t offset[nn];     //!< mu, covariance indeces for each node
+    int64_t anchor_id[nn];  //!< id of associated anchor node, for each node
+    int8_t anchor_added[nn];  //!< true if associated anchor node is actually added to graph
+    
+    int32_t n;              //!< length of the mu vector (sum(dim) or 0 if not returned)
+    double  mu[n];          //1< the mean vector
+
+    int32_t dim_mr;         //!< dimension of the most recent node (important for COV_RIGHTCOL)
+    int32_t m;              //!< length of the covariance data
+    double  covariance[m];  //!< returned covariance
+                            // COV_FULL     (n*n row-major)
+                            // COV_BLOCK    (dim[i]*dim[i] blocks row-major)
+                            // COV_RIGHTCOL (dim[i]*dim_mr blocks row-major)
+    int16_t req_cov;        //!< type of covariance request, see request_state_t
+}

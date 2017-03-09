@@ -1,0 +1,8 @@
+package irp_sen;
+
+struct pg_sync_t {
+    int64_t utime;
+
+    // image number
+    int32_t img_num;
+}

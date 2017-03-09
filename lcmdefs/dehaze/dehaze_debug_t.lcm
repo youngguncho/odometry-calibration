@@ -1,0 +1,26 @@
+package dehaze;
+
+/**
+ * image enhancement for debug plot
+ */
+
+struct debug_t
+{
+	int64_t utime;			// utime [usec]
+	
+	int32_t mode;
+    const int32_t IE_MODE_SIMPLE             = 0;
+    const int32_t IE_MODE_FULL               = 1;
+        
+	int32_t width;
+	int32_t height;
+	int32_t size;
+	float original_img[size];
+	float enhanced_img[size];
+	
+	int32_t n;
+	float plane_param[n];
+	int32_t n2;
+	float led_pose[n2];
+	
+}

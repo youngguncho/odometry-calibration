@@ -1,0 +1,26 @@
+package irp_vis;
+
+struct debugplot_t
+{
+    int64_t utime_i;
+    int64_t utime_j;
+
+    // to color code each feat
+    int32_t n_feat_types;                   
+    int32_t npts_each_type[n_feat_types];
+
+    // inliers from pccs
+    //int32_t n_in_pccs;
+    //int32_t isel_pccs_i[n_in_pccs];
+    //int32_t isel_pccs_j[n_in_pccs];
+
+    // inliers
+    //int32_t n_in;
+    //int32_t isel[n_in];
+
+    // reg successful ?
+    int32_t reg_result;             // fail or succ?
+    int32_t errmsg;                 // if failed, why? 
+    const int32_t REG_FAIL  = 0;
+    const int32_t REG_SUCC  = 1;
+}

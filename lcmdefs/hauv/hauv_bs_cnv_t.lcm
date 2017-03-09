@@ -1,0 +1,16 @@
+// modified version - original in svn revision 75
+package hauv;
+
+struct bs_cnv_t
+{
+    int64_t time_received;
+    int64_t time_nav;
+    double x;
+    double y;
+    double z;
+    double heading;
+// Should be here but are not in the current spec (HJ 20091122)
+//        double pitch;
+//        double roll;
+}
+

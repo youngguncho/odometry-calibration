@@ -1,0 +1,11 @@
+package irp_sen;
+
+struct sick5xx_t {
+    int64_t utime;
+
+    int16_t model_no;
+
+    int16_t n;
+    float range[n];     // meter
+    float intensity[n];     // meter
+}

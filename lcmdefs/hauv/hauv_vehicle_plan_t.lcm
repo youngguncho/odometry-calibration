@@ -1,0 +1,15 @@
+package hauv;
+
+struct vehicle_plan_t
+{
+	int64_t time;
+
+	boolean stop;
+	boolean holdStation;
+	boolean heading;
+	boolean broadcast;
+	double headingOffset;
+	double depth;
+	int32_t npoints;
+	double waypoints[npoints][2];
+}

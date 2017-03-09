@@ -1,0 +1,17 @@
+package hauv;
+
+struct bs_dvl_2_t
+{
+    int64_t time_received;
+    int64_t time;
+    double velocity1;
+    double velocity2;
+    double velocity3;
+    double velocity4;
+    double range1;
+    double range2;
+    double range3;
+    double range4;
+    double temperature;
+    int64_t time_measured;
+}

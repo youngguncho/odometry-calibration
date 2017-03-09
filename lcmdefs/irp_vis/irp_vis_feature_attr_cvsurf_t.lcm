@@ -1,0 +1,16 @@
+package irp_vis;
+
+struct feature_attr_cvsurf_t
+{
+    int32_t npts;
+    int8_t  laplacian[npts]; // -1, 0, or +1. sign of laplacian at the point
+                             // can be used to speedup feature comparison
+                             // (normally features with laplacians of different signs can not match)
+
+    float size[npts];      // size of the feature
+
+    float   dir[npts];       // orientation of the feature: 0..2pi radians
+
+    float   hessian[npts];   // value of the hessian (can be used to approximately estimate the
+                             // feature strengths
+}

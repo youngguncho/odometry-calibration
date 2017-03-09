@@ -1,0 +1,22 @@
+package hauv;
+
+struct pdn_cluster_vis_t
+{
+    int64_t utime;
+    int32_t nnodes;
+
+    // point (x,y,z)
+    double x[nnodes];
+    double y[nnodes];
+    double z[nnodes];
+
+    // cluster information, -1: unassigned 0,...,n_wp-1
+    int32_t c_id[nnodes];  
+
+    // waypoint information if available
+    int32_t n_wps;
+    int64_t wp_utimes[n_wps];
+    double wp_x[n_wps];
+    double wp_y[n_wps];
+    double wp_z[n_wps];
+}

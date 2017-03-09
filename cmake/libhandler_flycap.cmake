@@ -1,0 +1,7 @@
+macro (libhandler_flycap)
+  libhandler_find_library (flycapture "did you build flycap in third-party?" ${ARGN})
+  if (FLYCAPTURE_FOUND)
+    include_directories (${FLYCAPTURE_INCLUDE_DIR})
+    set (IRPLIB_FLYCAP ${FLYCAPTURE2_LIBS})
+  endif ()
+endmacro ()

@@ -1,0 +1,11 @@
+package irp_sen;
+
+struct status_t {
+
+    int64_t utime;                      // utime [usec]
+
+    float voltage;                      // battary voltage
+    boolean velodyne[2];                   //velodyne status(1: on , 0: off)
+    boolean camera[4];                     //camera status(1: on, 0: off)
+}
+

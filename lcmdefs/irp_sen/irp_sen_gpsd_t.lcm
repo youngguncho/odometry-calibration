@@ -1,0 +1,64 @@
+package irp_sen;
+
+struct gpsd_t
+{
+    // imported from PeRL senlcm
+
+    int64_t utime;  /* microseconds since epoch */
+
+    int64_t online;    /* NZ if GPS is on line, 0 if not */
+
+    /* accumulated PVT data */
+    int64_t fix_utime;  /* microseconds since epoch */
+
+    int8_t  mode;       /* Mode of fix */
+    const int8_t MODE_NOT_SEEN=0; /* mode update not seen yet */
+    const int8_t MODE_NO_FIX=1;   /* none */
+    const int8_t MODE_2D=2;       /* good for latitutde/longitude */
+    const int8_t MODE_3D=3;       /* good for altitude/climb too */
+
+    double  ept;        /* Expected time uncertainty */
+    double  latitude;   /* Latitude in radians (valid if mode >= 2) */
+    double  longitude;  /* Longitude in radians (valid if mode >= 2) */
+    double  altitude;   /* Altitude in meters (valid if mode == 3) */
+    double  eph;        /* Horizontal position uncertainty, meters */
+    double  epv;        /* Vertical position uncertainty, meters */
+    double  track;      /* Course made good (relative to true north) */
+    double  epd;        /* Track uncertainty, degrees */
+    double  speed;      /* Speed over ground, meters/sec */
+    double  eps;        /* Speed uncertainty, meters/sec */
+    double  climb;      /* Vertical speed, meters/sec */
+    double  epc;        /* Vertical speed uncertainty */
+
+
+    double  geoidal_separation; /* Geoidal separation, MSL - WGS84 (meters) */
+    
+    /* GPS status -- always valid */
+    int16_t    status;               /* Do we have fix? */
+    const int16_t STATUS_NO_FIX=0;   /* no */
+    const int16_t STATUS_FIX=1;      /* yes, without DGPS */
+    const int16_t STATUS_DGPS_FIX=2; /* yes, with DGPS */
+
+    /* precision of fix -- valid if satellites_used > 0 */
+    int16_t satellites_used;         /* Number of satellites used in solution */
+    int16_t used[satellites_used];   /* PRNs of satellites used in solution */
+    double pdop, hdop, tdop, gdop;   /* Dilution of precision */
+
+    /* redundant with the estimate elements in the fix structure */
+    double epe; /* spherical position error, 95% confidence (meters) */
+
+    /* satellite status -- valid when satellites > 0 */
+    int16_t satellites_visible;    /* # of satellites in view */
+    int16_t PRN[satellites_visible];       /* PRNs of satellites */
+    int16_t elevation[satellites_visible]; /* elevation of satellite */
+    int16_t azimuth[satellites_visible];   /* azimuth */
+    int16_t ss[satellites_visible];        /* signal-to-noise ration (dB) */
+
+    /* where and what gpsd thinks the device is */
+    string gps_device; /* only valid if non-null */
+    string gps_id;     /* only valid if non-null */
+
+    /* device list */
+    int16_t ndevices;             /* count of available devices */
+    string  devicelist[ndevices]; /* list of pathnames */
+}

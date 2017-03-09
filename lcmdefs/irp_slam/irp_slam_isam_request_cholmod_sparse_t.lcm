@@ -1,0 +1,10 @@
+package irp_slam;
+
+struct isam_request_cholmod_sparse_t
+{
+    int64_t  utime;
+
+    int16_t  type;
+    const int16_t WEIGHTED_JACOB=1;
+    const int16_t R=2;
+}

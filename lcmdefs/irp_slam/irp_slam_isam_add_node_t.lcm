@@ -1,0 +1,37 @@
+package irp_slam;
+
+struct isam_add_node_t
+{
+    int64_t utime;
+
+    // Node type
+    int64_t id;
+    int16_t node_type;
+    
+    int8_t has_mu_o;
+    int32_t mu_dim;
+    double mu_o[mu_dim]; // = [x,y,z,r,p,h] + [others]
+
+    // Enumeration for node types
+    const int16_t NODE_POSE2D=1;
+    const int16_t NODE_POSE3D=2;
+    const int16_t NODE_POINT2D=3;
+    const int16_t NODE_POINT3D=4;
+    const int16_t NODE_PLANE2D=5;
+    const int16_t NODE_PLANE3D=6;
+    const int16_t NODE_ANCHOR2D=7;
+    const int16_t NODE_ANCHOR3D=8;
+
+	// The sensor that is propsing the node
+    // sensor_id = 0 can be used if the node is for no specific sensor
+    int16_t sensor_id;
+
+    // Enumeration of different sensor id
+    const int16_t NODE_NOSENSOR 	= 0;
+    const int16_t NODE_ODO 		    = 1;
+    const int16_t NODE_SONAR 		= 2;
+    const int16_t NODE_CAMERA 		= 4;
+    const int16_t NODE_3D_LASER 	= 8;
+    const int16_t NODE_2D_LASER 	= 16;
+    const int16_t NODE_OMNI_CAMERA 	= 32;
+}

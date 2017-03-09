@@ -1,0 +1,12 @@
+package hauv;
+
+struct bs_rbs_t
+{
+    int64_t time_received;
+    int64_t time;
+    int32_t battery_number;
+    double voltage;
+    double minimum_cell_voltage;
+    double maximum_cell_voltage;
+    double temperature;
+}

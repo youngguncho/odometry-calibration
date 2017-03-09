@@ -1,0 +1,10 @@
+package irp_sen;
+
+struct autonix_t {
+    int64_t utime;
+
+    int16_t model_no;
+    
+	int64_t left;
+	int64_t	right;
+}

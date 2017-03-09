@@ -1,0 +1,23 @@
+package hauv;
+
+struct wp_path_t
+{
+    int32_t n;
+    int32_t wp_id;
+    int64_t start_utime;
+    int64_t goal_utime;
+
+    boolean round_trip;
+
+    // path 6 dof & 3 dof hull relative
+    double x[n];
+    double y[n];
+    double z[n];
+    double r[n];
+    double p[n];
+    double h[n];
+    //double relx[n];
+    //double rely[n];
+    //double relh[n];
+}
+

@@ -1,0 +1,21 @@
+package irp_slam;
+
+/**
+ * Commands sent to isam server
+ */
+
+struct isam_cmd_t
+{
+    int64_t utime;
+    int32_t cmd;
+
+    const int32_t CMD_BATCH      = 0;   //!< start a batch optimization step
+    const int32_t CMD_START      = 1;   //!< start the SLAM engine
+    const int32_t CMD_STOP       = 2;   //!< stop the SLAM engine
+    const int32_t CMD_SAVE       = 3;   //!< save the current graph (set path)
+    const int32_t CMD_LOAD       = 4;   //!< load graph (set path)
+
+    // Command options
+    string path;                //!< file path (for commands CMD_SAVE, CMD_SAVE_TXT, CMD_SAVE_CPU, CMD_SAVE_ALL & CMD_LOAD)
+
+}

@@ -1,0 +1,6 @@
+package hauv;
+
+struct bs_raw_t
+{
+    string message;
+}

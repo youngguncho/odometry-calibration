@@ -1,0 +1,12 @@
+package hauv;
+
+struct bs_rcm_t
+{
+    int64_t time_received;
+    int64_t time;
+    int32_t compass_number;
+    double heading;
+    double pitch;
+    double roll;
+    int64_t time_measured;
+}

@@ -1,0 +1,10 @@
+package irp_core;
+
+struct rgb_t
+{
+    //int64_t  utime; // ? we will probabily work with point cloud
+
+    byte r;
+    byte g;
+    byte b;
+}

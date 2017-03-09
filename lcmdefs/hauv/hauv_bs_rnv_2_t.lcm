@@ -1,0 +1,20 @@
+// modified version - original in svn revision 75
+package hauv;
+// RNV - according to payload interface specification v1.4
+struct bs_rnv_2_t
+{
+    int64_t time_received;
+    int64_t time;
+    double horizontal;
+    double vertical;
+    double distance;
+    double heading;
+    double depth;
+    double absheading;
+    double absroll;
+    double abspitch;
+    int64_t time_nav;
+// Having these would be useful (HJ 20091122)
+// double x;
+// double y;
+}

@@ -1,0 +1,10 @@
+// modified version - original in svn revision 75
+package hauv;
+
+struct bs_pit_t
+{
+    int64_t time_received;
+    int64_t time;
+    double pitch_dvl;
+    double pitch_sonar;
+}

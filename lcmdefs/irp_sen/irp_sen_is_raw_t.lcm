@@ -1,0 +1,7 @@
+package irp_sen;
+
+struct is_raw_t {
+    int64_t utime;
+
+    byte data[49152];   //DIDSON raw data
+}

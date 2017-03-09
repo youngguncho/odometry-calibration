@@ -1,0 +1,6 @@
+macro (libhandler_sba)
+  libhandler_find_library (sba "did you build sba in third-party?" ${ARGN})
+  if (SBA_FOUND)
+    set (IRPLIB_SBA ${SBA_LIBRARIES})
+  endif ()
+endmacro ()

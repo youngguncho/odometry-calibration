@@ -1,0 +1,6 @@
+package hauv;
+
+struct pl_raw_t
+{
+    string message;
+}

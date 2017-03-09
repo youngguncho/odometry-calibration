@@ -1,0 +1,23 @@
+package hauv;
+
+struct vehicle_state_t
+{
+    int64_t time;
+
+    double x;
+    double y;
+    double z;
+    double roll;        // roll in radians
+    double pitch;       // pitch in radians
+    double heading;     // heading in radians
+    double altitude;
+    double dvlAngle;
+    double sonarAngle;
+
+    // Sonar data
+    double rmin;        // Minimium range on sonar frame
+    double rmax;        // Maximum range on sonar frame
+    double sonarX;
+    double sonarY;
+    double sonarZ;
+}

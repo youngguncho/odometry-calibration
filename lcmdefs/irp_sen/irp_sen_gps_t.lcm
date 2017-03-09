@@ -1,0 +1,27 @@
+package irp_sen;
+
+struct gps_t 
+{
+    int64_t utime;
+
+	int32_t     available;          // num of visible satellite
+	float       satellite_time;     //
+
+	double      latitude;
+	double      longitude;
+    double      altitude;
+
+	float       precision;          // ?
+
+	float       satellite_elevation[12];
+	float       satellite_azimuth[12];
+	float       satellite_SNR[12];
+
+	float		pdop;       //?
+	float		hdop;       //?
+	float		vdop;       //?
+
+	float		err_dev_lat;
+	float		err_dev_lon;
+	float		err_dev_alt;
+}

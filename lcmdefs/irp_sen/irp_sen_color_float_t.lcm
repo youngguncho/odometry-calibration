@@ -1,0 +1,10 @@
+package irp_sen;
+
+struct color_float_t
+{
+	float r;
+	float g;
+	float b;
+}
+
+
