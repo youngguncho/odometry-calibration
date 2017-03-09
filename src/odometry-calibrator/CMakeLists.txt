@@ -2,7 +2,7 @@ cmake_minimum_required (VERSION 2.8.12)
 
 set (CMAKE_PREFIX_PATH /opt/Qt5.6.1/5.6/gcc_64/lib/cmake)
 
-project (viewer)
+project (odom-calibrator)
 
 # Find includes in corresponding build directories
 # Adds in each directory ${CMAKE_CURRENT_SOURCE_DIR} and ${CMAKE_CURRENT_BINARY_DIR}
@@ -18,11 +18,12 @@ find_package (Qt5OpenGL)
 set (SRC
   main.cpp 
   MainWindow.cpp MainWindow.h
-  transform.cpp  transform.h
+  #transform.cpp   transform.h
+  odomproblem.cpp odomproblem.h
 )
 
 # add UI file
-qt5_wrap_ui (viewer_ui_moc MainWindow.ui)
+qt5_wrap_ui (calibrator_ui_moc MainWindow.ui)
 
 # add Resources
 qt5_add_resources(SHADER_RSC_ADDED resources.qrc)
@@ -37,8 +38,8 @@ libhandler_eigen3 ()
 find_package(Ceres REQUIRED)
 include_directories(${CERES_INCLUDE_DIRS})
 
-add_executable (viewer ${SRC} ${SHADER_RSC_ADDED} ${viewer_ui_moc})
-target_link_libraries (viewer
+add_executable (odom-calibrator ${SRC} ${SHADER_RSC_ADDED} ${calibrator_ui_moc})
+target_link_libraries (odom-calibrator
     Qt5::Widgets
     Qt5::Gui
     Qt5::OpenGL
@@ -49,4 +50,4 @@ target_link_libraries (viewer
     ${CERES_LIBRARIES}
 )
 
-pods_install_executables (viewer)
+pods_install_executables (odom-calibrator)
