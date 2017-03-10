@@ -27,6 +27,11 @@ public:
 
 
 private:
+
+    // make initial data for
+    bool MakeInitial_();
+    bool FindKeys_();
+
     template<typename T>
     void FscanfOrDie(FILE* fptr, const char* format, T* value) {
         int num_scanned = fscanf(fptr, format, value);
@@ -54,8 +59,17 @@ private:
     double* observations_;
     double* parameters_;
 
-    map < int64_t, vector<int64_t> > odom_map_;
-    map < int64_t, vector<double> > gps_map_;
+    // For raw data
+    map < int64_t, vector<int64_t> > encoder_raw_map_;
+    map < int64_t, vector<double> > gps_raw_map_;
+
+    // For prepared data
+    //
+    vector <vector<int64_t>> encoder_diff_vec_;
+    vector <vector<double>> gps_pose_diff_vec_;
+
+//    map < int64_t, vector<int64_t> > encoder_diff_map_;
+//    map < int64_t, vector<double> > gps_pose_diff_map_;
 };
 
 #endif // ODOMPROBLEM_H
