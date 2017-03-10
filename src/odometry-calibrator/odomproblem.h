@@ -9,6 +9,8 @@
 
 #include "ceres/ceres.h"
 
+#include "transform.h"
+
 using namespace std;
 
 class OdomProblem

@@ -18,7 +18,7 @@ find_package (Qt5OpenGL)
 set (SRC
   main.cpp 
   MainWindow.cpp MainWindow.h
-  #transform.cpp   transform.h
+  transform.cpp   transform.h
   odomproblem.cpp odomproblem.h
 )
 
