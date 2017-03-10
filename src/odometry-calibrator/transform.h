@@ -11,22 +11,22 @@ namespace odo_calib {
     template <typename T>
     void
     head2tail_2d (const T* X_ij, const T* X_jk, T* X_ik) {
-        T x_ij = X_ij[SE2_DOF::x]; T y_ij = X_ij[SE2_DOF::y]; T t_ij = X_ij[SE2_DOF::h];
-        T x_jk = X_jk[SE2_DOF::x]; T y_jk = X_jk[SE2_DOF::y]; T t_jk = X_jk[SE2_DOF::h];
+        T x_ij = X_ij[0]; T y_ij = X_ij[1]; T t_ij = X_ij[2];
+        T x_jk = X_jk[0]; T y_jk = X_jk[1]; T t_jk = X_jk[2];
 
-        X_jk[SE2_DOF::x] = x_jk*cos(t_ij) - y_jk*sin(t_ij) +x_ij;
-        X_ik[SE2_DOF::y] = x_jk*sin(t_ij) + y_jk*cos(t_ij) +y_ij;
-        X_ik[SE2_DOF::h] = t_ij + t_jk;
+        X_ik[0] = x_jk*cos(t_ij) - y_jk*sin(t_ij) +x_ij;
+        X_ik[1] = x_jk*sin(t_ij) + y_jk*cos(t_ij) +y_ij;
+        X_ik[2] = t_ij + t_jk;
     }
 
     template <typename T>
     void
     inverse_2d (const T* X_ij, T* X_ji) {
-        T x_ij = X_ij[SE2_DOF::x]; T y_ij = X_ij[SE2_DOF::y]; T t_ij = X_ij[SE2_DOF::h];
+        T x_ij = X_ij[0]; T y_ij = X_ij[1]; T t_ij = X_ij[2];
 
-        X_ji[SE2_DOF::x] = -x_ij*cos(t_ij) - y_ij*sin(t_ij);
-        X_ji[SE2_DOF::y] = x_ij*sin(t_ij) - y_ij*cos(t_ij);
-        X_ji[SE2_DOF::h] = -t_ij;
+        X_ji[0] = -x_ij*cos(t_ij) - y_ij*sin(t_ij);
+        X_ji[1] = x_ij*sin(t_ij) - y_ij*cos(t_ij);
+        X_ji[2] = -t_ij;
     }
 
     template <typename T>

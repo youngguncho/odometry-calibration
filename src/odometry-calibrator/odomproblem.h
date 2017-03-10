@@ -13,6 +13,13 @@
 
 using namespace std;
 
+using ceres::AutoDiffCostFunction;
+using ceres::CostFunction;
+using ceres::CauchyLoss;
+using ceres::Problem;
+using ceres::Solver;
+using ceres::Solve;
+
 class OdomProblem
 {
 public:
@@ -65,7 +72,7 @@ private:
 
     // For prepared data
     //
-    vector <vector<int64_t>> encoder_diff_vec_;
+    vector <vector<double>> encoder_diff_vec_;
     vector <vector<double>> gps_pose_diff_vec_;
 
 //    map < int64_t, vector<int64_t> > encoder_diff_map_;
