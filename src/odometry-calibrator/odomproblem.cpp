@@ -15,55 +15,7 @@ OdomProblem::~OdomProblem()
     delete[] utime_gpses_;
 }
 
-struct OdometryGPSError {
-    OdometryGPSError(double observed_enc_l, double observed_enc_r, double observed_x, double observed_y, double observed_h)
-        : observed_enc_l(observed_enc_l), observed_enc_r(observed_enc_r),
-          observed_x(observed_x), observed_y(observed_y), observed_h(observed_h) {}
 
-    template <typename T>
-    bool operator ()(const T* const odo_variables,
-                     T* residuals) const {
-
-        double diameter_left = odo_variables[0];
-        double diemeter_right = odo_variables[1];
-        double wheel_base = odo_variables[2];
-
-        double dist_left = observed_enc_l * M_PI * diameter_left / 2048;
-        double dist_right = observed_enc_r * M_PI * diemeter_right / 2048;
-
-        double l_avg = (dist_left + dist_right) / 2;
-        double l_diff = (dist_right - dist_left);
-
-        double dth = l_diff / wheel_base;
-        double dx = l_avg * cos(dth);
-        double dy = l_avg * sin(dth);
-
-        double X_odo[3] = {dx, dy, dth};
-        double X_gps[3] = {observed_x, observed_y, observed_h};
-
-        odo_calib::tail2tail_2d(X_odo, X_gps, residuals);
-//        residuals[0] = 0;
-//        residuals[1] = 0;
-//        residuals[2] = 0;
-        return true;
-    }
-
-    // Factory to hide the construction of the CostFunction object from
-    // the client code.
-//    static CostFunction* Create(const double observed_enc_l, const double observed_enc_r,
-//                                       const double observed_x, const double observed_y, const double observed_h) {
-//        return (new AutoDiffCostFunction<OdometryGPSError, 1, 1, 1>(
-//                    new OdometryGPSError(observed_enc_l, observed_enc_r, observed_x, observed_y, observed_h)));
-//    }
-
-
-    double observed_enc_l;
-    double observed_enc_r;
-    double observed_x;
-    double observed_y;
-    double observed_h;
-
-};
 
 bool OdomProblem::LoadFile(const char *filename) {
     FILE *fptr = fopen(filename, "r");
@@ -119,7 +71,7 @@ find_key_in_mapvector (map< K, vector<V>> mapvector, K key, map_iter<K, V> &matc
         match_iter = mapvector.lower_bound(key);
     }
 
-//    return match_iter;
+    return true;
 }
 
 
