@@ -23,7 +23,7 @@ S_global{1} = S0;
 
 % Encoder covariance
 Enc_cov = diag([0.0005, 0.0005]).^2;
-
+vdh = [];
 for k = 2:size(enc_cnt,1)
     % calculate relative motion from wheel odometry
     dL = ((enc_cnt_L(k)-enc_cnt_L(k-1)) / ENCODER_RESOLUTION * d_l * pi);
@@ -33,11 +33,11 @@ for k = 2:size(enc_cnt,1)
     dth = (dR - dL) / w_b;
     dx = dist * cos (dth);
     dy = dist * sin (dth); 
+    vdh = [vdh; dth];
       
     % robot starts from initial pose (global coordinate = initial coordinate)
     % (a) First compute the control input mean and covariance
     u = [dx, dy, dth];      % control input u
-    
     J_odo = [1/2*cos(dth) 1/2*cos(dth); 1/2*sin(dth) 1/2*sin(dth); 1/2+1/w_b 1/2-1/w_b];
     Q = J_odo*Enc_cov*J_odo';
     
@@ -57,7 +57,7 @@ figure(1);
 for k = 1:length(pose_global)
     scale = 2;
     plot_triangle(pose_global{k}, scale);  hold on;% plot sample position
-    
+    disp(['vdh' num2str(vdh(k))]);
 %     if k == size(enc_cnt,1)
 %         plot_ellipse (pose_global{k}(1:2),S_global{k}(1:2,1:2),'b');
 %     else
@@ -69,5 +69,5 @@ for k = 1:length(pose_global)
     axis([-120 120 -10 225])
     grid on
     drawnow;
-    % pause(0.02);
+    pause(0.07);
 end

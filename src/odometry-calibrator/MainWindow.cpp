@@ -1,6 +1,7 @@
 #include "MainWindow.h"
 #include "ui_MainWindow.h"
 #include "odomproblem.h"
+#include <ctime>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -17,12 +18,18 @@ MainWindow::MainWindow(QWidget *parent) :
     odom_problem.PrepareObservations();
 
     ceres::Problem problem;
-    for (int i=0; i < odom_problem.num_observations(); ++i) {
+    for (int i=0; i < odom_problem.num_observations()/20; ++i) {
 
         double obs[5];
-        obs[0] = odom_problem.get_observation_gps(i,0);
-        obs[1] = odom_problem.get_observation_gps(i,1);
-        obs[2] = odom_problem.get_observation_gps(i,2);
+        double noise = ((double) rand() / (RAND_MAX)) * 2;
+        double noise2 = ((double) rand() / (RAND_MAX)) * 4; 
+        double noise3 = ((double) rand() / (RAND_MAX)) * 3;  
+        cout << "NOISE " << noise << endl;
+        cout << "NOISE2 " << noise2 << endl;
+        cout << "NOISE3 " << noise3 << endl;
+        obs[0] = odom_problem.get_observation_gps(i,0)+noise;
+        obs[1] = odom_problem.get_observation_gps(i,1)+noise2;
+        obs[2] = odom_problem.get_observation_gps(i,2)+noise3;
         obs[3] = odom_problem.get_observation_enc(i,0);
         obs[4] = odom_problem.get_observation_enc(i,1);
 
